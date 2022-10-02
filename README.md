@@ -1,4 +1,5 @@
 # Final Project kelompok Beta Tech
+# Banking Dataset - Marketing Targets
 
 ## Prerequisites :
 1. Download Dataset [here](https://www.kaggle.com/datasets/prakharrathi25/banking-dataset-marketing-targets)
@@ -28,6 +29,23 @@ Output variable (desired target):
 ###### 17 - y - has the client subscribed a term deposit? (binary: "yes","no")
 Missing Attribute Values: None
 
+
+# Stage 0
+## Problem Statement : <br>
+Biaya marketing yang cukup mahal, membuat kita harus selektif untuk memberikan marketing hanya kepada user yang berpeluang tinggi untuk membuka deposito berjangka.
+## Business Metric
+- Tingkat konversi pembukaan deposito berjangka (berapa banyak user yang membuka deposito setelah ditarget marketing)
+- Jumlah customer yang dihubungi saat campaign marketing
+## Goals
+- Meningkatkan efisiensi direct campaign marketing untuk mendapatkan nasabah deposito berjangka yang potensial dengan meminimalisir nilai False Positive.
+- Meningkatkan tingkat konversi pembukaan deposito berjangka.
+## Objective
+- Membangun model Machine Learning yang dapat memprediksi nasabah yang potensial untuk menerima campaign
+- Menemukan faktor utama dari nasabah yang menerima campaign dan menyetujui produk deposito yang ditawarkan
+- Memberikan rekomendasi bagi tim marketing yang akan meningkatkan efektivitas perusahaan dalam memberikan campaign kepada nasabah terpilih
+- Meminimalkan nilai False Positive pada model Machine Learning dengan nilai akurasi yang baik
+
+# Stage 1
 ## Summary Insight: 
 1. Nasabah yang mengambil deposito kurang lebih memiliki karakteristik sama, yaitu condong ke tidak punya riwayat gagal bayar cicilan dan tidak punya pinjaman pribadi, dengan conversion rate 10-11%. <br>
    *Business Recommendation:*<br>Menargetkan nasabah yang tidak punya riwayat gagal bayar cicilan dan tidak punya pinjaman pribadi.
