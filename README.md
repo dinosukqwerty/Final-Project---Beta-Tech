@@ -93,3 +93,33 @@ Biaya marketing yang cukup mahal, membuat kita harus selektif untuk memberikan m
 
 10. Pelanggan 'ya' untuk kelompok usia yang berbeda: keinginan untuk berlangganan sangat tinggi untuk orang berusia di antara 25-54 tahun dan orang yang lebih muda berusia di bawah 25 tahun juga memiliki tingkat berlangganan yang lebih tinggi daripada kelompok usia lainnya.<br>
     *Business Recommendation:* <br> Bank harus memprioritaskan telemarketingnya kepada klien yang berusia di di antara 25-54 yang memiliki saldo di antara 5001-25000, karena mereka memiliki tingkat penerimaan tertinggi sekitar 13.9%. Kelompok berikutnya yang harus menjadi fokus bank adalah kelompok early working dengan saldo 0-5000, yang menunjukkan tingkat berlangganan yang tinggi yaitu 5%.
+
+# Stage 2
+## Data Processing
+### Data Cleansing
+1. Handle missing values dan Handle duplicated data<br>
+Tidak perlu di-handle karena data tidak ada missing dan duplicated.
+2. Handle outliers<br>
+Teknik yang digunakan adalah menggunakan z-score dengan persentase data yg terbuang sebanyak 11%, apabila menggunakan teknik IQR data yang terbuang sebanyak 37%.
+3. Feature transformation<br>
+Pada fitur numerikal teknik yang digunakan untuk menormalkan sebaran data menggunakan Teknik Transformasi Yeo-Johnson dikarenakan fitur pada dataset sebagian nilai minimumnya bernilai negatif. Setelah itu dilakukan rescaling menggunakan standardization.
+4. Feature encoding<br>
+Pada dataset terdapat fitur kategorikal yg bernilai binary sehingga di Label Encoder, ordinal dengan Teknik Maping dan Nominal dengan Teknik One Hot Encoder
+5. Handle class imbalance<br>
+Class Imbalance tergolong moderate, sehingga perlu dilakukan Teknik Oversampling dan Undersampling
+
+### Feature Engineering
+A. Feature selection (membuang feature yang kurang relevan atau redundan)<br>
+<p style='text-align: justify;'>Ada dua fitur redundan yaitu pdays dan previous, fitur yang dibuang adalah pdays dikarenakan korelasi pdays < previous terhadap target.</p>
+<p style='text-align: justify;'>Semua fitur kategori korelasinya tidak ada yang redundan dan semua fitur kategori juga memiliki kausalitas dengan target (dengan metode chi-square), maka tidak perlu ada fitur kategorical yang dihilangkan.</p>
+<p style='text-align: justify;'>Fitur numeric (age, balace, day, duration, campaign, previous) tetap dipertahankan karena memiliki hubungan kausalitas dengan target.
+Pengecekan hubungan kausalitas menggunakan Anova untuk fitur age, balace, day, duration, dan campaign karena distribusi dari fitur-fitur tersebut bisa dinormalkan setelah dilakukan transformasi dan standarisasi.</p>
+<p style='text-align: justify;'>Fitur previous dicek hubungan kausalitasnya menggunakan Mann-Whitney U test karena distribusinya tetap skew meskipun sudah dilakukan transformasi dan standarisasi.</p>
+<br>
+B.  Feature extraction (membuat feature baru dari feature yang sudah ada)<br>
+<p style='text-align: justify;'>Untuk saat ini belum ada feature extraction, tetapi apabila nanti model yang dihasilkan masih kurang bagus, akan dicoba untuk ditambahkan fitur-fitur baru, misalnya:</p>
+<ul><li>fitur year (di dataset ini tidak ada fitur year, namun karena dataset sudah urut saat dilihat dari excel, maka bisa ditambahkan fitur year secara manual menggunakan excel.</li>
+<li>fitur day diubah menjadi awal bulan, pertengahan bulan, dan akhir bulan. Hal ini didasarkan pada distribusi trimodal fitur day.</li>
+<li>fitur month diubah berdasarkan musim atau dibagi per kuartal.</li>
+<li>fitur age diubah berdasarkan kelompok usia pekerja</li>
+
